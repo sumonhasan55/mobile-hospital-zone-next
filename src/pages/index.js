@@ -1,5 +1,6 @@
 import AboutPage from '@/components/About'
 import Carousel from '@/components/Carousel'
+import GalleryPage from '@/components/Gallery'
 import Services from '@/components/Service'
 import WhyusPage from '@/components/WhyusCard'
 import { Inter } from 'next/font/google'
@@ -11,6 +12,7 @@ export default function Home() {
    <>
   <Carousel/>
   <Services/>
+  <GalleryPage/>
   <WhyusPage/>
   <AboutPage/>
   
