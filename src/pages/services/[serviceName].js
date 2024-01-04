@@ -30,16 +30,35 @@ const ServiceDetail = ({ service }) => {
 };
 
 export async function getServerSideProps({ params }) {
-  const { serviceName } = params;
-  const res = await fetch(`https://mobile-hospital-zone-nextjs-aknp3qxf3-sumonhasan55.vercel.app/services?name=${encodeURIComponent(serviceName)}`);
-  const data = await res.json();
-  const service = data[0];
+  try {
+    const { serviceName } = params;
+    const res = await fetch(`http://localhost:3001/services?name=${encodeURIComponent(serviceName)}`);
 
-  return {
-    props: {
-      service,
-    },
-  };
+    if (!res.ok) {
+      throw new Error('Failed to fetch service data');
+    }
+
+    const data = await res.json();
+    const service = data[0];
+
+    if (!service) {
+      return {
+        notFound: true,
+      };
+    }
+
+    return {
+      props: {
+        service,
+      },
+    };
+  } catch (error) {
+    console.error('Error fetching service data:', error);
+    return {
+      notFound: true,
+    };
+  }
 }
+
 
 export default ServiceDetail;
