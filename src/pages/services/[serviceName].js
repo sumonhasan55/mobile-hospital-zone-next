@@ -31,7 +31,7 @@ const ServiceDetail = ({ service }) => {
 
 export async function getServerSideProps({ params }) {
   const { serviceName } = params;
-  const res = await fetch(`http://localhost:3001/services?name=${encodeURIComponent(serviceName)}`);
+  const res = await fetch(`https://mobile-hospital-zone-nextjs-aknp3qxf3-sumonhasan55.vercel.app/services?name=${encodeURIComponent(serviceName)}`);
   const data = await res.json();
   const service = data[0];
 
