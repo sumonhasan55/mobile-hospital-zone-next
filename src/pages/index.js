@@ -1,5 +1,6 @@
 import AboutPage from '@/components/About'
 import Carousel from '@/components/Carousel'
+import ContactPage from '@/components/Contact'
 import GalleryPage from '@/components/Gallery'
 import Services from '@/components/Service'
 import VideoPage from '@/components/Videos'
@@ -17,6 +18,7 @@ export default function Home() {
   <VideoPage/>
   <WhyusPage/>
   <AboutPage/>
+  <ContactPage/>
   
    </>
   )
