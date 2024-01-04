@@ -1,0 +1,10 @@
+echo "# e-mobile-repair-zone" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/sumonhasan55/e-mobile-repair-zone.git
+git push -u origin main
+
+
+server run:npx json-server --watch db.json --port 3001

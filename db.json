@@ -1,0 +1,52 @@
+{
+    "services": [
+        {
+            "name": "Display Failure",
+            "price": "$50",
+            "imageURL": "https://i.ibb.co/CwD9YHt/display-failour.jpg",
+            "rating": 4.5,
+            "reviews": 120,
+            "description": "Fast and reliable mobile repair service with competitive pricing."
+        },
+        {
+            "name": "Leiquid Damage",
+            "price": "$65",
+            "imageURL": "https://i.ibb.co/Zmygq3t/lequide-damaged.jpg",
+            "rating": 4.8,
+            "reviews": 90,
+            "description": "Expert mobile repair technicians ready to rescue your device from any issue."
+        },
+        {
+            "name": "Charging Issues",
+            "price": "$55",
+            "imageURL": "https://i.ibb.co/mFkmfmk/Charging-Issues.jpg",
+            "rating": 4.3,
+            "reviews": 150,
+            "description": "Your go-to solution for affordable and efficient gadget repairs."
+        },
+        {
+            "name": "Damaged Mobile",
+            "price": "$40",
+            "imageURL": "https://i.ibb.co/8ddCCvs/Mobile-Repair-Services.jpg",
+            "rating": 4.6,
+            "reviews": 100,
+            "description": "Swift and precise mobile repair services at budget-friendly rates."
+        },
+        {
+            "name": "Power Issues",
+            "price": "$75",
+            "imageURL": "https://i.ibb.co/m8YZbQr/Power-Issues.jpg",
+            "rating": 4.9,
+            "reviews": 200,
+            "description": "Highly skilled tech wizards dedicated to fixing your mobile devices with perfection."
+        },
+        {
+            "name": "Motherboard Replesment",
+            "price": "$48",
+            "imageURL": "https://i.ibb.co/ZN5H13s/Motherboard-Replesment.jpg",
+            "rating": 4.4,
+            "reviews": 80,
+            "description": "Easy and affordable solutions for all your mobile phone repair needs."
+        }
+    ]
+}
