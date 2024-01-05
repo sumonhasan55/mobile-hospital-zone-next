@@ -8,7 +8,7 @@ const ServiceCard = () => {
   useEffect(() => {
     async function fetchData() {
       try {
-        const res = await fetch('http://localhost:3001/services');
+        const res = await fetch('https://mobile-services-data.onrender.com/services');
 
         if (!res.ok) {
           throw new Error('Failed to fetch data');
