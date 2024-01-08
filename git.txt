@@ -3,10 +3,13 @@ git init
 git add README.md
 git commit -m "first commit"
 git branch -M main
-git remote add origin https://github.com/sumonhasan55/e-mobile-repair-zone.git
+git remote add origin https://github.com/sumonhasan55/mobile-hospital-zone-next.git
 git push -u origin main
 
 
 server run:npx json-server --watch db.json --port 3001
 
 mobilePhone Url:https://raw.githubusercontent.com/ilyasozkurt/mobilephone-brands-and-models/master/devices.json
+
+
+https://github.com/sumonhasan55/mobile-hospital-zone-next.git
