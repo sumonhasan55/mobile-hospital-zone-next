@@ -32,13 +32,14 @@ const ServiceDetail = ({ service }) => {
 export async function getServerSideProps({ params }) {
   try {
     const { serviceName } = params;
-    const res = await fetch(`http://localhost:3001/services?name=${encodeURIComponent(serviceName)}`);
+    const res = await fetch(`https://mobile-services-data.onrender.com/services?name=${encodeURIComponent(serviceName)}`);
 
     if (!res.ok) {
       throw new Error('Failed to fetch service data');
     }
 
     const data = await res.json();
+    console.log(data)
     const service = data[0];
 
     if (!service) {

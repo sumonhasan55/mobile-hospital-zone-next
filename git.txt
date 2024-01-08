@@ -8,3 +8,5 @@ git push -u origin main
 
 
 server run:npx json-server --watch db.json --port 3001
+
+mobilePhone Url:https://raw.githubusercontent.com/ilyasozkurt/mobilephone-brands-and-models/master/devices.json

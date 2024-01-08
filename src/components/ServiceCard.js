@@ -1,4 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
+
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 
@@ -14,6 +15,7 @@ const ServiceCard = () => {
           throw new Error('Failed to fetch data');
         }
         const data = await res.json();
+        console.log(data)
         setServices(data);
       } catch (error) {
         console.error('Error fetching data:', error);
