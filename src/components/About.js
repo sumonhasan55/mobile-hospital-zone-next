@@ -5,8 +5,13 @@ import React from 'react';
 const AboutPage = () => {
     return (
         <>
-            <h1 className="text-5xl font-bold text-center bg-base-200 pt-12 text-slate-500 ">About Us!</h1>
-            <div className="hero min-h-screen bg-base-200">
+
+
+            <div className='bg-base-200 shadow-2xl'>
+            <div>
+                <h1 className=" font-bold pt-12 text-slate-500 text-center text-2xl  lg:text-5xl my-20  ">About Us!</h1>
+            </div>
+            <div className="hero min-h-screen ">
 
                 <div className="hero-content flex-col lg:flex-row w-full">
                     <div className="">
@@ -26,9 +31,10 @@ const AboutPage = () => {
                     </div>
                 </div>
             </div>
-
-
+            <div />
+            </div>
         </>
+
     );
 };
 

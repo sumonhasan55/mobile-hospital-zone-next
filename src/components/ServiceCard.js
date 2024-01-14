@@ -35,7 +35,7 @@ const ServiceCard = () => {
       ) : (
         // Render service cards once data is available
         services.map((service) => (
-          <div className="card w-96 bg-base-100 shadow-xl my-8" key={service.name}>
+          <div className="card w-96 bg-base-100 shadow-xl my-8 " key={service.name}>
             <Link href={`/services/${encodeURIComponent(service.name)}`}>
               <figure>
                 <img src={service.imageURL} alt="Services" className="rounded-2xl w-80 h-60" />
