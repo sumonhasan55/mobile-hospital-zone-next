@@ -116,7 +116,13 @@ export async function getStaticProps() {
         const response = await fetch(
             'https://raw.githubusercontent.com/ilyasozkurt/mobilephone-brands-and-models/master/devices.json'
         );
+
+        if (!response.ok) {
+            throw new Error(`Failed to fetch data. Status: ${response.status}`);
+        }
+
         const data = await response.json();
+
         const devices = data.RECORDS;
 
         if (!Array.isArray(devices)) {
