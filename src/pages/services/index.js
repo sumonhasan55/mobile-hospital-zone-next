@@ -26,9 +26,8 @@ const Home = ({ devices }) => {
 
         const filtered = devices.filter(
             (device) =>
-                device.name.toLowerCase().includes(lowerCaseSearchInput) ||
-                device.id.toLowerCase().includes(lowerCaseSearchInput) ||
-                device.os.toLowerCase().includes(lowerCaseSearchInput)
+                device.name.toLowerCase().includes(lowerCaseSearchInput) 
+             
         );
 
         setFilteredDevices(filtered);
@@ -73,11 +72,11 @@ const Home = ({ devices }) => {
                                     <div className="card w-96 bg-base-100 shadow-xl my-8 " key={device.id} onClick={() => navigateToDevice(device.name)}>
                                         <Link href={`/services/${encodeURIComponent(device.name)}`}>
                                             <figure>
-                                                <img src={device.picture} alt="Services" className="rounded-2xl w-80 h-60" />
+                                                <img src={device.imageURL} alt="Services" className="rounded-2xl w-80 h-60" />
                                             </figure>
                                             <div className="card-body">
                                                 <h2 className="card-title">{device.name}</h2>
-                                                <p>{device.os}</p>
+                                                <p>{device.description}</p>
                                                 <button className="bg-primary text-white rounded-full p-2">Get Now!</button>
                                             </div>
                                         </Link>
@@ -114,7 +113,7 @@ const Home = ({ devices }) => {
 export async function getStaticProps() {
     try {
         const response = await fetch(
-            'https://raw.githubusercontent.com/ilyasozkurt/mobilephone-brands-and-models/master/devices.json'
+            'https://mobile-services-data.onrender.com/services'
         );
 
         if (!response.ok) {
@@ -123,7 +122,7 @@ export async function getStaticProps() {
 
         const data = await response.json();
 
-        const devices = data.RECORDS;
+        const devices = data;
 
         if (!Array.isArray(devices)) {
             throw new Error('Invalid data format received from the API');
