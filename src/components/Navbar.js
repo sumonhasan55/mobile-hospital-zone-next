@@ -10,14 +10,14 @@ const Navbar = () => {
 
     const handleButtonClick = async () => {
         try {
-          setIsLoading(true);
-          await router.push('/services');
+            setIsLoading(true);
+            await router.push('/services');
         } catch (error) {
-          console.error('Error navigating to /services', error);
+            console.error('Error navigating to /services', error);
         } finally {
-          setIsLoading(false);
+            setIsLoading(false);
         }
-      };
+    };
 
 
 
@@ -30,14 +30,16 @@ const Navbar = () => {
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                         </div>
                         <ul tabIndex={0} className="font-bold menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
-                            <li><a>Home</a></li>
+                            <li><Link href={"/"}>Home</Link></li>
                             <li><a>Aboutus</a></li>
                             <li>
-                                <Link href={"/allservices"}>Services</Link>
+                                <Link href={"/services"}>Services</Link>
                                 <ul className="p-2">
                                     <ul className="p-2">
-                                        <li><a>Mobile Repair </a></li>
-                                        <li><a>Mobile Accesorise</a></li>
+                                        <li> <Link href={"/services"}>Mobile Repair </Link>
+                                        </li>
+                                        <li> <Link href={"/services"}>Mobile Accesorise </Link>
+                                        </li>
                                     </ul>
                                 </ul>
                             </li>
@@ -55,7 +57,7 @@ const Navbar = () => {
                                 onClick={handleButtonClick}
                             >
                                 {isLoading ? (
-                                      <span className="loading loading-spinner text-accent"></span>
+                                    <span className="loading loading-spinner text-accent"></span>
                                 ) : (
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
                                         <path fillRule="evenodd" d="M10.5 3.75a6.75 6.75 0 1 0 0 13.5 6.75 6.75 0 0 0 0-13.5ZM2.25 10.5a8.25 8.25 0 1 1 14.59 5.28l4.69 4.69a.75.75 0 1 1-1.06 1.06l-4.69-4.69A8.25 8.25 0 0 1 2.25 10.5Z" clipRule="evenodd" />
@@ -71,7 +73,7 @@ const Navbar = () => {
                 <div className="navbar-center lg:flex hidden">
                     <ul className="menu menu-horizontal px-1 font-bold">
                         <li>
-                            <Link href={"/allservices"}>Services</Link>
+                            <Link href={"/services"}>Services</Link>
                         </li>
                         <li><a>Aboutus</a></li>
                         <li><a>Contactus</a></li>
