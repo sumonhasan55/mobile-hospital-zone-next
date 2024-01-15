@@ -1,10 +1,22 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { useSession, signIn, signOut } from "next-auth/react"
+import cartsvg from "../assets/images/shopping-cart.svg";
+import auth from '@/firebase/firebase.config';
+import Image from 'next/image';
 
 
 
 const Navbar = () => {
+    const { data: session } = useSession()
+
+
+
+    const logout = () => {
+        signOut(auth);
+    };
+
     const router = useRouter();
     const [isLoading, setIsLoading] = useState(false);
 
@@ -49,14 +61,14 @@ const Navbar = () => {
 
                     <Link href={"/"} className="btn btn-ghost text-xl font-bold italic">E<span className='text-primary'>Mobile</span><span className=' text-slate-500'>Zone</span></Link>
 
-                    <div className='lg:hidden flex ml-20'>
-                        <div className=' my-auto'>
+                    <div className='  lg:hidden flex ml-28'>
+                        <div className=' navbar-end flex mx-auto my-auto'>
                             <button
                                 type="submit"
-                                className={`btn btn-sm btn-ghost mx-2 ${isLoading ? 'loading' : ''}`}
+                                className={`btn btn-sm btn-ghost mx-auto my-auto ${isLoading ? 'loading' : ''}`}
                                 onClick={handleButtonClick}
                             >
-                                {isLoading ? (
+                                {isLoading? (
                                     <span className="loading loading-spinner text-accent"></span>
                                 ) : (
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
@@ -64,9 +76,26 @@ const Navbar = () => {
                                     </svg>
                                 )}
                             </button>
+                            <Image
+                                src={cartsvg}
+                                width={40}
+                                alt="error_image"
+                                style={{ display: "flex", margin: "5px auto" }}
+                            />
                         </div>
+                        {
+                            
+                            session ?
+                            <button onClick={logout} className="btn bg-primary text-white hover:text-black ">Logout</button>
+                                :
 
-                        <Link href="/login" className="btn bg-primary text-white hover:text-black ">Login</Link>
+                                <Link href="/login" className="btn bg-primary text-white hover:text-black ">Login</Link>
+
+
+                        }
+
+
+
 
                     </div>
                 </div>
@@ -79,12 +108,29 @@ const Navbar = () => {
                         <li><a>Contactus</a></li>
                     </ul>
                 </div>
-                <div className="navbar-end lg:flex hidden">
+                <div className=" navbar-end lg:flex hidden">
 
                     <Link href="/services"> <button type="submit" className="btn btn-sm btn-ghost mx-2"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
                         <path fillRule="evenodd" d="M10.5 3.75a6.75 6.75 0 1 0 0 13.5 6.75 6.75 0 0 0 0-13.5ZM2.25 10.5a8.25 8.25 0 1 1 14.59 5.28l4.69 4.69a.75.75 0 1 1-1.06 1.06l-4.69-4.69A8.25 8.25 0 0 1 2.25 10.5Z" clipRule="evenodd" />
                     </svg></button></Link>
-                    <Link href="/login" className="btn bg-primary text-white hover:text-black ml-2">Login</Link>
+                   <Link href={"/cart"}>
+                   <Image
+                                src={cartsvg}
+                                width={40}
+                                alt="error_image"
+                                style={{ display: "flex", margin: "0px auto" }}
+                            />
+                   </Link>
+                   {
+                            
+                            session ?
+                            <button onClick={logout} className="btn bg-primary text-white hover:text-black ">Logout</button>
+                                :
+
+                                <Link href="/login" className="btn bg-primary text-white hover:text-black ">Login</Link>
+
+
+                        }
                 </div>
             </div>
 

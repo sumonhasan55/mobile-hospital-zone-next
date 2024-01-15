@@ -1,11 +1,12 @@
 /* eslint-disable @next/next/no-page-custom-font */
 import Footer from '@/components/Footer'
+import { SessionProvider } from "next-auth/react"
 import Navbar from '@/components/Navbar'
 import '@/styles/globals.css'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 
-export default function App({ Component, pageProps }) {
+export default function App({ Component, pageProps: { session, ...pageProps }}) {
   
 const router = useRouter()
   return(
@@ -14,11 +15,13 @@ const router = useRouter()
 <title>Mobile_Zone</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" />
   </Head>
+  <SessionProvider session={session}>
   <Navbar/>
  {
    <Component key={router.asPath} {...pageProps} />
  }
  <Footer/>
+ </SessionProvider>
 
 </>
    
