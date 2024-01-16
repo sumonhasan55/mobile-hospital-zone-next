@@ -38,7 +38,7 @@ const LoginPage = () => {
         <h3  className=' mt-2  text-xl  font-bold'>SIGNUP WITH</h3>
         <div className={styles.social_icons}>
           <button onClick={()=>signIn("google",{
-            callbackUrl:"http://localhost:3000/"
+            callbackUrl:"https://mobile-hospital-zone-next-jlcoyhdq7-sumonhasan55.vercel.app/"
           })} ><Image
           src={googlesvg}
           width={700}
@@ -46,7 +46,7 @@ const LoginPage = () => {
           style={{ display: "flex", margin: "5px auto" }}
         /></button>
           <button onClick={()=>signIn("github",{
-            callbackUrl:"http://localhost:3000/"
+            callbackUrl:"https://mobile-hospital-zone-next-jlcoyhdq7-sumonhasan55.vercel.app/"
           })} ><Image
           src={githubsvg}
           width={700}
