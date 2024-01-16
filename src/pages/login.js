@@ -47,7 +47,7 @@ const LoginPage = () => {
       <h3  className=' mt-2  text-xl  font-bold'>LOGIN WITH</h3>
         <div className={styles.social_icons}>
           <button onClick={()=>signIn("google",{
-            callbackUrl:"http://localhost:3000/"
+            callbackUrl:"https://mobile-hospital-zone-next-jlcoyhdq7-sumonhasan55.vercel.app/"
           })} ><Image
           src={googlesvg}
           width={700}
@@ -55,7 +55,7 @@ const LoginPage = () => {
           style={{ display: "flex", margin: "5px auto" }}
         /></button>
           <button className='mx-2' onClick={()=>signIn("github",{
-            callbackUrl:"http://localhost:3000/"
+            callbackUrl:"https://mobile-hospital-zone-next-jlcoyhdq7-sumonhasan55.vercel.app/"
           })} ><Image
           src={githubsvg}
           width={700}
@@ -68,11 +68,11 @@ const LoginPage = () => {
         <form onSubmit={handleSubmit(onSubmit)}>
 
           <label htmlFor="">Your Email</label>
-          <input {...register('email', { required: true })} type="email"  />
+          <input {...register('email', { required: true })} type="email" className=' text-black'  />
           {errors.email && <span>{errors.email.message}</span>}
 
           <label htmlFor="">Your Password</label>
-          <input {...register('passwword', { required: true })} type="password" />
+          <input {...register('passwword', { required: true })} type="password" className=' text-black' />
           {errors.password && <span>{errors.password.message}</span>}
 
           <button type="submit"  className=' bg-primary rounded-xl text-xl py-2 my-2'>Login</button><br></br>
