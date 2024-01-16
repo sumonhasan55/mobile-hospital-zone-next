@@ -13,7 +13,7 @@ const NotFoundPage = () => {
   return (
     <div style={{ textAlign: "center" }}>
       <Head>
-        <title>PH-News-404 Not Found</title>
+        <title>404 Not Found</title>
         <meta
           name="description"
           content="This is news portal of programming hero made by next-js"
