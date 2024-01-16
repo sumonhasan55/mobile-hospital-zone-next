@@ -10,7 +10,7 @@ import Image from 'next/image';
 
 const Navbar = () => {
     const { data: session } = useSession()
-
+   
 
 
     const logout = () => {
@@ -104,8 +104,9 @@ const Navbar = () => {
                         <li>
                             <Link href={"/services"}>Services</Link>
                         </li>
-                        <li><a>Aboutus</a></li>
-                        <li><a>Contactus</a></li>
+                        <li><Link href={"/about"}>Aboutus</Link></li>
+                        <li><Link href={"/contact"}>Contactus</Link></li>
+                        
                     </ul>
                 </div>
                 <div className=" navbar-end lg:flex hidden">
@@ -124,7 +125,11 @@ const Navbar = () => {
                    {
                             
                             session ?
+                            <>
+                            {session.user.email}
+                            
                             <button onClick={logout} className="btn bg-primary text-white hover:text-black ">Logout</button>
+                            </>
                                 :
 
                                 <Link href="/login" className="btn bg-primary text-white hover:text-black ">Login</Link>
