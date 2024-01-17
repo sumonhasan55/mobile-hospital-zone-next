@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMicrochip, faMoneyCheck, faCalendar, faPersonBiking } from '@fortawesome/free-solid-svg-icons';
+import { faMicrochip, faMoneyCheck, faCalendar, faPersonBiking, } from '@fortawesome/free-solid-svg-icons';
 
 
 const WhyusPage = () => {

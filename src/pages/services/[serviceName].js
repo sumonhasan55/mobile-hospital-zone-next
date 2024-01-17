@@ -1,25 +1,46 @@
 /* eslint-disable @next/next/no-img-element */
-"use client"
-import Cart from '@/components/Cart';
-import Link from 'next/link';
 import { useState, useEffect } from 'react';
+import Cart from '../cart';
+
 
 
 const ServiceDetail = ({ service }) => {
-  const [loading, setLoading] = useState(!service);
+
   const [cartItems, setCartItems] = useState([]);
+
+  useEffect(() => {
+    const savedCart = localStorage.getItem('cart');
+    if (savedCart) {
+      setCartItems(JSON.parse(savedCart));
+    }
+  }, []);
+
+  // Function to handle removing item from the cart
+  const removeFromCart = (itemToRemove) => {
+    const updatedCart = cartItems.filter((item) => item.name !== itemToRemove.name);
+    setCartItems(updatedCart);
+    // Update local storage
+    localStorage.setItem('cart', JSON.stringify(updatedCart));
+  };
+
+  const [loading, setLoading] = useState(!service);
+
 
   useEffect(() => {
     setLoading(!service);
   }, [service]);
 
+
   const addToCart = () => {
-    setCartItems((prevItems) => [...prevItems, service]);
+    const newItem = {
+      name: service.name,
+    };
+    const updatedCart = [...cartItems, newItem];
+    setCartItems(updatedCart);
+    localStorage.setItem('cart', JSON.stringify(updatedCart));
   };
 
-  const removeFromCart = (itemToRemove) => {
-    setCartItems((prevItems) => prevItems.filter((item) => item !== itemToRemove));
-  };
+
 
   if (loading) {
     return <span className="loading loading-spinner text-accent"></span>;
@@ -44,22 +65,16 @@ const ServiceDetail = ({ service }) => {
             <p className="py-1"> <span className=' font-serif italic'>Reviews:</span>{service.reviews}</p>
             <p className=''><span className=' font-semibold'>Contact: </span><p> <span className=' font-serif italic mx-4'>Phone:</span>{service.contactInformation.phone}</p>
               <p className="py-1"> <span className=' font-serif italic mx-4'>Email:</span>{service.contactInformation.email}</p>
-
             </p>
-            
-              
-            <Link href="/cart" className="btn bg-primary text-white hover:text-black ml-2">
-              Go to Cart
-            </Link>
-            <button className="btn bg-primary text-white hover:text-black ml-2" onClick={addToCart}>
-              Add to Cart
-            </button>
-          
+            <button onClick={addToCart}>Add to Cart</button>
           </div>
         </div>
+
       </div>
-      <Cart vcartItems={cartItems} onRemoveItem={removeFromCart} />
+      <Cart cartItems={cartItems} onRemoveItem={removeFromCart} />
+
     </section>
+
   );
 };
 

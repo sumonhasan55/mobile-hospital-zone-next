@@ -8,8 +8,6 @@ const AllServicesPage = ({ devices }) => {
     const [filteredDevices, setFilteredDevices] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const devicesPerPage = 9;
-
-
     const indexOfLastDevice = currentPage * devicesPerPage;
     const indexOfFirstDevice = indexOfLastDevice - devicesPerPage;
     const currentDevices = filteredDevices.slice(indexOfFirstDevice, indexOfLastDevice);
@@ -26,8 +24,8 @@ const AllServicesPage = ({ devices }) => {
 
         const filtered = devices.filter(
             (device) =>
-                device.serviceName.toLowerCase().includes(lowerCaseSearchInput) 
-             
+                device.serviceName.toLowerCase().includes(lowerCaseSearchInput)
+
         );
 
         setFilteredDevices(filtered);
@@ -42,7 +40,7 @@ const AllServicesPage = ({ devices }) => {
         setCurrentPage(newPage);
     };
     const handleShowMore = (device) => {
-       
+
         console.log(`Show more for ${device.serviceName}`);
     };
 
@@ -69,35 +67,33 @@ const AllServicesPage = ({ devices }) => {
                     </div>
 
                     <div className=" mx-auto ml-12 gap-5 lg:grid grid-cols-3">
-                {Array.isArray(currentDevices) && currentDevices.length > 0 ? (
-                    currentDevices.map((device) => (
-                        <div className="card w-96 bg-base-100 shadow-xl my-8" 
-                        key={device.id} onClick={() => navigateToDevice(device.name)}>
-                            <Link href={`/services/${encodeURIComponent(device.serviceName)}`}>
-                                <figure>
-                                    <img src={device.imageURL} alt="Services" className="rounded-2xl w-80 h-60" />
-                                </figure>
-                                <div className="card-body">
-                                    <h2 className="card-title">{device.serviceName}</h2>
-                                    <p className="description">{device.description.length > 100 ? `${device.description.slice(0, 100)}...` : device.description}</p>
-                                    {device.description.length > 100 && (
-                                        <button className="show-more-btn" onClick={() => handleShowMore(device)}>
-                                            Show More
-                                        </button>
-                                    )}
-                                    <button className="bg-primary text-white rounded-full p-2">Get Now!</button>
+                        {Array.isArray(currentDevices) && currentDevices.length > 0 ? (
+                            currentDevices.map((device) => (
+                                <div className="card w-96 bg-base-100 shadow-xl my-8"
+                                    key={device.id} onClick={() => navigateToDevice(device.name)}>
+                                    <Link href={`/services/${encodeURIComponent(device.serviceName)}`}>
+                                        <figure>
+                                            <img src={device.imageURL} alt="Services" className="rounded-2xl w-80 h-60" />
+                                        </figure>
+                                        <div className="card-body">
+                                            <h2 className="card-title">{device.serviceName}</h2>
+                                            <p className="description">{device.description.length > 100 ? `${device.description.slice(0, 100)}...` : device.description}</p>
+                                            {device.description.length > 100 && (
+                                                <button className="show-more-btn" onClick={() => handleShowMore(device)}>
+                                                    Show More
+                                                </button>
+                                            )}
+                                            <button className="bg-primary text-white rounded-full p-2">Get Now!</button>
+                                        </div>
+                                    </Link>
                                 </div>
-                            </Link>
-                        </div>
-                    ))
-                ) : (
-                    <p className="mx-auto text-center my-5 font-serif">Sorry! No devices found!!! Try Again later!</p>
-                )}
-            </div>
+                            ))
+                        ) : (
+                            <p className="mx-auto text-center my-5 font-serif">Sorry! No devices found!!! Try Again later!</p>
+                        )}
+                    </div>
 
                     {/* Pagination */}
-
-
                     <div className=' mx-20  items-end font-semibold'>
                         <button className="join-item btn btn-outline" onClick={() => handlePageChange(currentPage - 1)} disabled={currentPage === 1}>
                             Previous Page
