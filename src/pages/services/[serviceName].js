@@ -34,10 +34,18 @@ const ServiceDetail = ({ service }) => {
   const addToCart = () => {
     const newItem = {
       name: service.name,
+      price: service.price,
     };
     const updatedCart = [...cartItems, newItem];
     setCartItems(updatedCart);
     localStorage.setItem('cart', JSON.stringify(updatedCart));
+  };
+  const updateQuantity = (name, increment) => {
+    setCartItems((prevItems) => {
+      return prevItems.map((item) =>
+        item.name === name ? { ...item, quantity: Math.max(1, item.quantity + increment) } : item
+      );
+    });
   };
 
 
@@ -63,15 +71,16 @@ const ServiceDetail = ({ service }) => {
             <p className="py-1"> <span className=' font-serif italic'>Location:</span>{service.location}</p>
             <p className="py-1"><span className=' font-serif italic'>Rating:</span>{service.rating}</p>
             <p className="py-1"> <span className=' font-serif italic'>Reviews:</span>{service.reviews}</p>
+            <p className="py-1"> <span className=' font-serif italic'>Price:</span>{service.price}</p>
             <p className=''><span className=' font-semibold'>Contact: </span><p> <span className=' font-serif italic mx-4'>Phone:</span>{service.contactInformation.phone}</p>
               <p className="py-1"> <span className=' font-serif italic mx-4'>Email:</span>{service.contactInformation.email}</p>
             </p>
-            <button onClick={addToCart}>Add to Cart</button>
+            <button  className="bg-primary text-white rounded-xl p-2" onClick={addToCart}>Add to Cart</button>
           </div>
         </div>
 
       </div>
-      <Cart cartItems={cartItems} onRemoveItem={removeFromCart} />
+      <Cart cartItems={cartItems} onRemoveItem={removeFromCart} updateQuantity={updateQuantity} />
 
     </section>
 
