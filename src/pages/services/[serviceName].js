@@ -14,7 +14,10 @@ const ServiceDetail = ({ service }) => {
       setCartItems(JSON.parse(savedCart));
     }
   }, []);
-
+  const clearCart = () => {
+    setCartItems([]);
+    localStorage.removeItem('cart');
+  };
   // Function to handle removing item from the cart
   const removeFromCart = (itemToRemove) => {
     const updatedCart = cartItems.filter((item) => item.name !== itemToRemove.name);
@@ -30,8 +33,17 @@ const ServiceDetail = ({ service }) => {
     setLoading(!service);
   }, [service]);
 
-
   const addToCart = () => {
+    
+    const isServiceInCart = cartItems.some((item) => item.name === service.name);
+
+    if (isServiceInCart) {
+      
+      alert('This service is already in your cart!');
+      return;
+    }
+
+   
     const newItem = {
       name: service.name,
       price: service.price,
@@ -40,6 +52,7 @@ const ServiceDetail = ({ service }) => {
     setCartItems(updatedCart);
     localStorage.setItem('cart', JSON.stringify(updatedCart));
   };
+
   const updateQuantity = (name, increment) => {
     setCartItems((prevItems) => {
       return prevItems.map((item) =>
@@ -71,7 +84,8 @@ const ServiceDetail = ({ service }) => {
             <p className="py-1"> <span className=' font-serif italic'>Location:</span>{service.location}</p>
             <p className="py-1"><span className=' font-serif italic'>Rating:</span>{service.rating}</p>
             <p className="py-1"> <span className=' font-serif italic'>Reviews:</span>{service.reviews}</p>
-            <p className="py-1"> <span className=' font-serif italic'>Price:</span>{service.price}</p>
+            <p className="py-1"> <span className=' font-serif italic'>Quantity:</span>{service.quantity}</p>
+            <p className="py-1"> <span className=' font-serif italic'>Price:$</span>{service.price}</p>
             <p className=''><span className=' font-semibold'>Contact: </span><p> <span className=' font-serif italic mx-4'>Phone:</span>{service.contactInformation.phone}</p>
               <p className="py-1"> <span className=' font-serif italic mx-4'>Email:</span>{service.contactInformation.email}</p>
             </p>
@@ -80,7 +94,7 @@ const ServiceDetail = ({ service }) => {
         </div>
 
       </div>
-      <Cart cartItems={cartItems} onRemoveItem={removeFromCart} updateQuantity={updateQuantity} />
+      <Cart cartItems={cartItems} onRemoveItem={removeFromCart} updateQuantity={updateQuantity} clearCart={clearCart} />
 
     </section>
 

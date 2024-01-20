@@ -1,65 +1,96 @@
+"use client"
 import Link from 'next/link';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
+const Cart = ({ cartItems, onRemoveItem,clearCart }) => {
+  const [quantities, setQuantities] = useState([]);
 
-const Cart = ({ cartItems, onRemoveItem }) => {
-  //console.log(cartItems)
+  // Initialize quantities when cartItems change
+  useEffect(() => {
+    setQuantities(cartItems?.map(() => 1));
+  }, [cartItems]);
+
+  const updateQuantity = (index, amount) => {
+    const newQuantities = [...quantities];
+    newQuantities[index] += amount;
+    if (newQuantities[index] < 1) {
+      newQuantities[index] = 1; // Prevent quantity from going below 1
+    }
+    setQuantities(newQuantities);
+  };
+
+  const calculateTotal = (item, index) => {
+    return item.price * quantities[index];
+  };
+
+  const calculateCartTotal = () => {
+    return cartItems?.reduce((total, item, index) => {
+      return total + calculateTotal(item, index);
+    }, 0);
+  };
+
+  const handleCheckout = () => {
+    if (cartItems?.length === 0) {
+      alert('Your cart is empty!! Please add a service.');
+    } else {
+      alert(`Thank You! Successfully You Get This Service! Total Cart Amount: $${calculateCartTotal()}`);
+      clearCart();
+      window.location.href = '/'; 
+    }
+  };
+
   return (
-    <div className="max-w-full mx-auto p-8 ">
-
+    <div className="max-w-4xl mx-auto p-8 overflow-x-auto">
       <h2 className="text-2xl font-bold mb-4 text-center">Shopping Cart</h2>
-      <table className=' mx-auto'>
+      <table className='mx-auto table'>
         <thead>
           <tr>
-            <th className=' mx-5'>Description</th>
+            <th className='mx-5'>Description</th>
             <th className=''>Price</th>
-            <th className=' mx-5'>Quantity</th>
-            <th className=' mx-5'>Total</th>
-            <th className=' mx-5'>Action</th>
+            <th className='mx-5'>Quantity</th>
+            <th className='mx-5'>Total</th>
+            <th className='mx-5'>Action</th>
           </tr>
         </thead>
         {cartItems?.length === 0 ? (
-          <p className=' text-center text-red-500'>Your cart is empty.</p>
+          <p className='text-center text-red-500'>Your cart is empty.</p>
         ) : (
-
           <tbody>
-            {cartItems?.map((item) => (
-              <>
-
-
-                <tr>
-                  <td>{item.name}</td>
-                  <td>{item.price}</td>
-                  <td class="quantity">
-                    <button onclick="updateQuantity(this, -1)">-</button>
-                    <span>1</span>
-                    <button onclick="updateQuantity(this, 1)">+</button>
-                  </td>
-                  <td class="total">{item.price}</td>
-                  <td><button onClick={() => onRemoveItem(item)} className="text-red-500 hover:text-red-700">
+            {cartItems?.map((item, index) => (
+              <tr key={index}>
+                <td>{item.name}</td>
+                <td>${item.price}</td>
+                <td className="quantity">
+                  <button onClick={() => updateQuantity(index, -1)}>-</button>
+                  <span>{quantities[index]}</span>
+                  <button onClick={() => updateQuantity(index, 1)}>+</button>
+                </td>
+                <td className="total">${calculateTotal(item, index)}</td>
+                <td>
+                  <button onClick={() => onRemoveItem(item)} className="text-red-500 hover:text-red-700">
                     Remove
-                  </button></td>
-                </tr>
-
-
-
-              </>
-
-
+                  </button>
+                </td>
+              </tr>
             ))}
           </tbody>
-
-
         )}
-        <div className="action-buttons mx-auto">
-          <Link href="/"> <button className=' bg-green-500 px-2 rounded-xl text-xl  italic my-2 text-white p-2' onClick={() => alert('Thank You For Continue Your Shopping ')}>Continue Shopping</button></Link>
-          {
-            cartItems?.length === 0 ? (  <button className=' bg-primary px-2 rounded-xl text-xl  italic my-2 mx-3 text-white p-2' onClick={() => alert('Your cart is empty!!plz added a service!!')}>Checkout</button>) : (<Link href="/">  <button className=' bg-primary px-2 rounded-xl text-xl  italic my-2 mx-3 text-white p-2' onClick={() => alert('Thank You! Sucessfully You Get This Service!')}>Checkout</button></Link>)
-          }
-
+      </table>
+      <div className='flex justify-end my-3 mx-20'>
+        <p className='font-semibold'>Total Cart Amount: ${calculateCartTotal()}</p>
+      </div>
+      <div className="action-buttons lg:mx-20 flex justify-end">
+        <div>
+          <Link href="/">
+            <button className='bg-green-500 px-2 rounded-xl text-xl italic my-2 text-white p-2' onClick={() => alert('Thank You For Continue Your Shopping ')}>Continue Shopping</button>
+          </Link>
         </div>
-      </table >
-
+        <div>
+          <button className='bg-primary px-2 rounded-xl text-xl italic my-2 mx-3 text-white p-2' onClick={handleCheckout}>
+            Checkout
+          </button>
+        </div>
+      </div>
     </div>
   );
 };
