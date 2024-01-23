@@ -99,7 +99,7 @@ const Navbar = () => {
                                                 Dashboard
                                             </Link>
                                         </li>
-                                        <li><a>Settings</a></li>
+                                        <li><Link href="/dashboard/settings" >Settings</Link></li>
                                         {
 
                                             session ?
@@ -160,7 +160,8 @@ const Navbar = () => {
                                         Dashboard
                                     </Link>
                                 </li>
-                                <li><a>Settings</a></li>
+                                <li><Link href="/dashboard/settings" >Settings</Link></li>
+                                <li><Link href="/orders" >Orders</Link></li>
                                 {
 
                                     session ?
