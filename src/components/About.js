@@ -7,16 +7,16 @@ const AboutPage = () => {
         <>
 
 
-            <div className=''>
+            <div className=' bg-base-200'>
                 <div>
-                    <h1 className=" font-bold pt-12 text-slate-500 text-center text-2xl  lg:text-5xl my-20  ">About Us!</h1>
+                    <h1 className=" font-bold  text-slate-500 text-center text-2xl  lg:text-5xl py-20  ">About Us!</h1>
                 </div>
                 <div className="hero min-h-screen ">
 
                     <div className="hero-content flex-col lg:flex-row w-full">
                         <div className="">
 
-                            <img src="https://i.ibb.co/ZJz5hD8/about-us.png" className="max-w-sm rounded-lg shadow-2xl lg:mx-5" />
+                            <img src="https://i.ibb.co/ZJz5hD8/about-us.png" className="max-w-sm rounded-lg shadow-2xl lg:mx-5 shadow-primary" />
                         </div>
                         <div className=' w-fit'>
 

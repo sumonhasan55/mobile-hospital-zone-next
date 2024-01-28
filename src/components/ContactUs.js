@@ -5,7 +5,7 @@ import { faMapMarkerAlt, faClock, faMessage, faPhoneAlt,faMagnifyingGlass } from
 
 const ContactUs = () => {
     return (
-        <div>
+        <div className='  bg-base-200'>
 
             <div className="min-h-screen hero ">
                 <div className="flex-col hero-content lg:flex-row-reverse justify-between gap-36 ">

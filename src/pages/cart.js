@@ -40,7 +40,7 @@ const Cart = ({ cartItems, onRemoveItem,clearCart }) => {
   };
 
   return (
-    <div className="max-w-4xl mx-auto p-8 overflow-x-auto min-h-screen">
+    <div className="max-w-4xl mx-auto p-8 overflow-x-auto min-h-screenm">
       <h2 className="text-2xl font-bold mb-4 text-center">Shopping Cart</h2>
       <table className='mx-auto table'>
         <thead>

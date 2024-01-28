@@ -5,7 +5,7 @@ import { faMicrochip, faMoneyCheck, faCalendar, faPersonBiking, } from '@fortawe
 
 const WhyusPage = () => {
     return (
-        <div className=' my-20'>
+        <div  className=' bg-base-200  py-5'>
             <h1 className=" text-center text-2xl my-10 lg:text-5xl lg:my-20 text-primary font-extrabold">Why us!</h1>
             <div className=" mx-auto items-center ml-20 lg:ml-8 lg:grid grid-cols-4 gap-3">
 

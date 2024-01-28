@@ -8,8 +8,8 @@ export const authOptions = {
 
   providers: [
     GithubProvider({
-      clientId: "8fb316f5e80c3c76953e",
-      clientSecret: "d4a2afefbe84ef78e797fe9bbb4f4b8fb72158bc",
+      clientId: process.env.GITHUB_CLIENT_ID,
+      clientSecret: process.env.GITHUB_CLIENT_SECRET,
     }),
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID,
