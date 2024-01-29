@@ -13,7 +13,7 @@ const Services = () => {
             </div>
 
 
-            <div className=" mx-auto ml-20  gap-5 lg:grid grid-cols-3">
+            <div className=" mx-auto ml-20  gap-5 lg:grid grid-cols-3 ">
                 <ServiceCard />
             </div>
 

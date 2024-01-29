@@ -66,72 +66,76 @@ const ProfileSidebar = () => {
   };
 
   return (
-    <div
-      className={wrapperClasses}
-      onMouseEnter={onMouseOver}
-      onMouseLeave={onMouseOver}
-      style={{ transition: "width 300ms cubic-bezier(0.2, 0, 0, 1) 0s" }}
-    >
-      <div className="flex flex-col">
-        <div className="flex items-center justify-between relative">
-          <div className="flex items-center pl-1 gap-2">
-            <Image src={LogoImage} alt="logo image" width={200} height={110}  />
-            <span
-              className={classNames("mt-2 text-lg font-medium text-text", {
-                hidden: toggleCollapse,
-              })}
-            >
-              
-            </span>
+    <div className="ml-16 lg:ml-0">
+      <div
+
+        className={wrapperClasses}
+        onMouseEnter={onMouseOver}
+        onMouseLeave={onMouseOver}
+        style={{ transition: "width 300ms cubic-bezier(0.2, 0, 0, 1) 0s" }}
+      >
+        <div className="flex flex-col">
+          <div className="flex items-center justify-between relative">
+            <div className="lg:flex items-center pl-1 gap-2 hidden">
+              <Image src={LogoImage} alt="logo image" width={200} height={110} />
+              <span
+                className={classNames("mt-2 text-lg font-medium text-text", {
+                  hidden: toggleCollapse,
+                })}
+              >
+
+              </span>
+            </div>
+            {isCollapsible && (
+              <button
+                className={collapseIconClasses}
+                onClick={handleSidebarToggle}
+              >
+                <CollapsIcon />
+              </button>
+            )}
           </div>
-          {isCollapsible && (
-            <button
-              className={collapseIconClasses}
-              onClick={handleSidebarToggle}
-            >
-              <CollapsIcon />
-            </button>
+
+          <div className="flex flex-col items-start mt-4">
+            {menuItems.map(({ icon: Icon, ...menu }) => {
+              const classes = getNavItemClasses(menu);
+              return (
+                <div className={classes}>
+                  <Link href={menu.link}>
+                    <li className="flex py-4 px-3 items-center w-full h-full">
+                      <div style={{ width: "2.5rem" }}>
+                        <Icon />
+                      </div>
+                      {!toggleCollapse && (
+                        <span
+                          className={classNames(
+                            "text-md font-medium text-text-light"
+                          )}
+                        >
+                          {menu.label}
+                        </span>
+                      )}
+                    </li>
+                  </Link>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
+        <div className={`${getNavItemClasses({})} px-3 py-4`}>
+          <div style={{ width: "2.5rem" }}>
+            <LogoutIcon />
+          </div>
+          {!toggleCollapse && (
+            <span className={classNames("text-md font-medium text-text-light")}>
+              Logout
+            </span>
           )}
         </div>
-
-        <div className="flex flex-col items-start mt-4">
-          {menuItems.map(({ icon: Icon, ...menu }) => {
-            const classes = getNavItemClasses(menu);
-            return (
-              <div className={classes}>
-                <Link href={menu.link}>
-                  <li className="flex py-4 px-3 items-center w-full h-full">
-                    <div style={{ width: "2.5rem" }}>
-                      <Icon />
-                    </div>
-                    {!toggleCollapse && (
-                      <span
-                        className={classNames(
-                          "text-md font-medium text-text-light"
-                        )}
-                      >
-                        {menu.label}
-                      </span>
-                    )}
-                  </li>
-                </Link>
-              </div>
-            );
-          })}
-        </div>
-      </div>
-
-      <div className={`${getNavItemClasses({})} px-3 py-4`}>
-        <div style={{ width: "2.5rem" }}>
-          <LogoutIcon />
-        </div>
-        {!toggleCollapse && (
-          <span className={classNames("text-md font-medium text-text-light")}>
-            Logout
-          </span>
-        )}
       </div>
     </div>
+
   );
 };
 

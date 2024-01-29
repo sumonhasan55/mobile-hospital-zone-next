@@ -40,7 +40,7 @@ const Cart = ({ cartItems, onRemoveItem,clearCart }) => {
   };
 
   return (
-    <div className="max-w-4xl mx-auto p-8 overflow-x-auto min-h-screenm">
+    <div className=" mx-auto lg:p-8 overflow-x-auto min-h-screenm ml-20">
       <h2 className="text-2xl font-bold mb-4 text-center">Shopping Cart</h2>
       <table className='mx-auto table'>
         <thead>
@@ -53,7 +53,7 @@ const Cart = ({ cartItems, onRemoveItem,clearCart }) => {
           </tr>
         </thead>
         {cartItems?.length === 0 ? (
-          <p className='text-center text-red-500'>Your cart is empty.</p>
+          <p className='text-center text-red-500 pl-10'>Your cart is empty.</p>
         ) : (
           <tbody>
             {cartItems?.map((item, index) => (

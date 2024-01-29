@@ -73,8 +73,8 @@ const ServiceDetail = ({ service }) => {
 
   return (
     <section>
-      <div className="hero min-h-screen bg-base-200">
-        <div className="hero-content flex-col lg:flex-row">
+      <div className=" hero min-h-screen w-full">
+        <div className="hero-content flex-col lg:flex-row pl-40">
           <img src={service.imageURL} alt="Services" className="rounded-2xl w-80  h-96 mx-2" />
           <div>
             <h1 className="text-5xl font-bold">{service?.name}</h1>

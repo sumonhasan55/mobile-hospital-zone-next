@@ -30,7 +30,7 @@ const LoginPage = () => {
     }
   };
   return (
-    <div>
+    <div className=' ml-28 lg:ml-0'>
       <Head>
         <title>SignUp</title>
       </Head>
