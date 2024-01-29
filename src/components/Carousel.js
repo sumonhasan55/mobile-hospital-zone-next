@@ -7,7 +7,7 @@ import CarouselImage4 from "./../../public/carrossel (4).png"
 const Carousel = () => {
     return (
         
-            <div className="carousel w-full ml-10 lg:ml-0">
+            <div className="carousel w-full  ml-20 lg:ml-0">
                 <div id="slide1" className="carousel-item relative w-full">
                     <Image src={CarouselImage1} className=" w-full" alt="carousel"  />
                     <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">

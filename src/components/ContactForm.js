@@ -10,7 +10,7 @@ export default function ContactForm
 
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className=" border border-spacing-2 py-5 items-center text-center">
+    <form onSubmit={handleSubmit(onSubmit)} className=" border border-spacing-2 py-5 items-center text-center ml-20 lg:ml-0">
       <input placeholder="FirstName" className=" border border-slate-600 my-2 px-5 py-2 w-96 mx-2 "  width="" {...register("firstName", { required: true, maxLength: 20 })} />
       <input placeholder="LastName" className=" border border-slate-600  my-2  px-5 py-2 w-96"  {...register("lastName", { pattern: /^[A-Za-z]+$/i })} /><br></br>
       <input placeholder="Email" className=" border border-slate-600  my-2  px-5 py-2 w-96  mx-2"  type="email" {...register("emailAddress", )} />
