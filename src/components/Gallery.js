@@ -7,7 +7,7 @@ import GalleryPic3 from "../../public/gallery (3).jpg"
 const GalleryPage = () => {
     return (
         <div>
-            <h1 className=" text-center text-2xl my-10 lg:text-5xl lg:my-20 text-primary font-extrabold">
+            <h1 className=" ml-16 lg:ml-0 text-center text-2xl my-10 lg:text-5xl lg:my-20 text-primary font-extrabold">
                 Gallery
             </h1>
 

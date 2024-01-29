@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { useSession, signIn, signOut } from "next-auth/react"
+import { useSession, signOut } from "next-auth/react"
 import cartsvg from "../assets/images/shopping-cart.svg";
 import auth from '@/firebase/firebase.config';
 import Image from 'next/image';
@@ -87,7 +87,7 @@ const Navbar = () => {
                                         style={{ display: "flex", margin: "0px auto" }}
                                     />
                                 </Link>
-                                <div className="dropdown dropdown-end">
+                                <div className="dropdown dropdown-end ml-20">
                                     <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
                                         <div className="w-10 rounded-full">
                                             <img alt="Tailwind CSS Navbar component" src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
@@ -133,7 +133,7 @@ const Navbar = () => {
 
                     </ul>
                 </div>
-                <div className=" navbar-end lg:flex hidden">
+                <div className=" navbar-end lg:flex hidden ">
 
                     <Link href="/services"> <button type="submit" className="btn btn-sm btn-ghost mx-2"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
                         <path fillRule="evenodd" d="M10.5 3.75a6.75 6.75 0 1 0 0 13.5 6.75 6.75 0 0 0 0-13.5ZM2.25 10.5a8.25 8.25 0 1 1 14.59 5.28l4.69 4.69a.75.75 0 1 1-1.06 1.06l-4.69-4.69A8.25 8.25 0 0 1 2.25 10.5Z" clipRule="evenodd" />

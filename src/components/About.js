@@ -7,7 +7,7 @@ const AboutPage = () => {
         <>
 
 
-            <div className=' bg-base-200'>
+            <div className='ml-16 lg:ml-0'>
                 <div>
                     <h1 className=" font-bold  text-slate-500 text-center text-2xl  lg:text-5xl py-20  ">About Us!</h1>
                 </div>

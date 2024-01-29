@@ -49,7 +49,7 @@ const AllServicesPage = ({ devices }) => {
             <div className=' min-h-screen my-5'>
                 <div>
 
-                    <div className='mx-auto text-center font-bold p-5 my-10'>
+                    <div className=' ml-16 lg:ml-0 mx-auto text-center font-bold p-5 my-10'>
                         <label htmlFor="searchInput" className='mx-2'>Search:</label>
                         <input
                             type="text"
@@ -63,7 +63,7 @@ const AllServicesPage = ({ devices }) => {
                     </div>
 
                     <div className=' my-5'>
-                        <h1 className=' font-extrabold text-center text-3xl text-primary'>Our All Services</h1>
+                        <h1 className=' ml-16 lg:ml-0 font-extrabold text-center text-3xl text-primary'>Our All Services</h1>
                     </div>
 
                     <div className=" mx-auto ml-12 gap-5 lg:grid grid-cols-3">
@@ -94,7 +94,7 @@ const AllServicesPage = ({ devices }) => {
                     </div>
 
                     {/* Pagination */}
-                    <div className=' mx-20  items-end font-semibold'>
+                    <div className=' lg:mx-20  items-end font-semibold mx-auto text-center'>
                         <button className="join-item btn btn-outline" onClick={() => handlePageChange(currentPage - 1)} disabled={currentPage === 1}>
                             Previous Page
                         </button>
